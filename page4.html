@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Hobby | Playing Games</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* my colors */
+:root{
+    --blue:#5ecbff;
+    --blue-soft:#b6e8ff;
+    --dark:#020b17;
+    --green:#22ff88;
+    --purple:#a855f7;
+    --pink:#ec4899;
+    --orange:#ff9500;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+    font-family:'Poppins',sans-serif;
+    min-height:100vh;
+    color:white;
+    background:linear-gradient(-45deg,#020617,#0f172a,#1e293b,#020617);
+    background-size:400% 400%;
+    animation:bgMove 20s ease infinite;
+    overflow-x:hidden;
+}
+
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* floating stuff */
+.float{
+    position:fixed;
+    font-size:40px;
+    opacity:0.15;
+    animation:float 14s ease-in-out infinite;
+    pointer-events:none;
+}
+
+.float:nth-child(1){top:10%;left:8%;animation-duration:12s;}
+.float:nth-child(2){top:70%;left:15%;animation-duration:16s;}
+.float:nth-child(3){top:30%;left:80%;animation-duration:18s;}
+.float:nth-child(4){top:80%;left:65%;animation-duration:14s;}
+.float:nth-child(5){top:50%;left:5%;animation-duration:15s;}
+
+@keyframes float{
+    0%{transform:translateY(0) rotate(0deg);}
+    50%{transform:translateY(-60px) rotate(180deg);}
+    100%{transform:translateY(0) rotate(360deg);}
+}
+
+/* navigation bar */
+nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 45px;
+    background:rgba(2,6,23,0.8);
+    backdrop-filter:blur(12px);
+    border-bottom:2px solid var(--blue);
+}
+
+nav h2{
+    font-weight:800;
+    color:var(--blue);
+}
+
+nav a{
+    color:#e5e7eb;
+    text-decoration:none;
+    margin-left:25px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:var(--green);
+    text-shadow:0 0 10px var(--green);
+}
+
+/* header section */
+header{
+    max-width:1200px;
+    margin:auto;
+    padding:80px 50px;
+    text-align:center;
+}
+
+header h1{
+    font-size:3.5em;
+    font-weight:800;
+    background:linear-gradient(90deg,var(--purple),var(--pink),var(--blue));
+    -webkit-background-clip:text;
+    color:transparent;
+    margin-bottom:20px;
+}
+
+header p{
+    font-size:1.2em;
+    line-height:1.7;
+    max-width:800px;
+    margin:0 auto;
+}
+
+/* main content */
+main{
+    max-width:1200px;
+    margin:0 auto 100px;
+    padding:0 45px;
+}
+
+/* cards for each section */
+.card{
+    background:rgba(255,255,255,0.1);
+    padding:40px;
+    border-radius:25px;
+    border:1px solid rgba(255,255,255,0.2);
+    box-shadow:0 15px 40px rgba(0,0,0,0.5);
+    margin-bottom:40px;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:var(--purple);
+    box-shadow:0 20px 50px rgba(0,0,0,0.7);
+}
+
+.card h2{
+    font-size:2em;
+    margin-bottom:20px;
+    color:var(--blue);
+}
+
+.card p{
+    font-size:1.1em;
+    line-height:1.7;
+    margin-bottom:15px;
+}
+
+/* game cards grid */
+.game-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+    margin-top:25px;
+}
+
+.game-card{
+    background:rgba(0,0,0,0.3);
+    padding:25px;
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,0.15);
+    transition:0.3s;
+    text-align:center;
+}
+
+.game-card:hover{
+    transform:translateY(-8px);
+    border-color:var(--purple);
+    box-shadow:0 15px 40px rgba(168,85,247,0.4);
+}
+
+.game-card .icon{
+    font-size:3em;
+    margin-bottom:15px;
+}
+
+.game-card h3{
+    color:var(--purple);
+    margin-bottom:10px;
+}
+
+.game-card p{
+    font-size:0.95em;
+    color:#ddd;
+}
+
+/* game section */
+#game-section{
+    background:linear-gradient(135deg,rgba(168,85,247,0.2),rgba(94,203,255,0.2));
+    padding:40px;
+    border-radius:25px;
+    border:2px solid var(--purple);
+    box-shadow:0 15px 40px rgba(0,0,0,0.5);
+    margin-bottom:40px;
+}
+
+.game-container{
+    text-align:center;
+    padding:20px;
+}
+
+.game-display{
+    background:rgba(0,0,0,0.4);
+    padding:30px;
+    border-radius:15px;
+    margin:20px 0;
+}
+
+#game-message{
+    font-size:1.3em;
+    margin:20px 0;
+    min-height:30px;
+    color:var(--green);
+    font-weight:600;
+}
+
+#score-display{
+    font-size:1.5em;
+    margin:15px 0;
+    color:var(--blue);
+}
+
+.game-input{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin:20px 0;
+    flex-wrap:wrap;
+}
+
+#guess-input{
+    width:200px;
+    text-align:center;
+    font-size:1.2em;
+    padding:12px;
+    border:2px solid rgba(255,255,255,0.2);
+    border-radius:10px;
+    background:rgba(255,255,255,0.1);
+    color:white;
+    font-family:'Poppins',sans-serif;
+}
+
+#guess-input:focus{
+    outline:none;
+    border-color:var(--blue);
+    box-shadow:0 0 15px rgba(94,203,255,0.5);
+}
+
+.game-btn{
+    padding:12px 25px;
+    border:none;
+    border-radius:10px;
+    background:linear-gradient(135deg,var(--purple),var(--pink));
+    color:white;
+    font-weight:700;
+    font-size:1.1em;
+    cursor:pointer;
+    transition:0.3s;
+    margin:5px;
+}
+
+.game-btn:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 20px rgba(168,85,247,0.7);
+}
+
+.game-btn:active{
+    transform:scale(0.95);
+}
+
+#previous-guesses{
+    margin:20px 0;
+    font-size:1em;
+    color:#ddd;
+}
+
+.guess-history{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    justify-content:center;
+    margin-top:10px;
+}
+
+.guess-bubble{
+    padding:8px 15px;
+    background:rgba(255,255,255,0.1);
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,0.3);
+}
+
+/* instructions */
+.instructions{
+    background:rgba(0,0,0,0.3);
+    padding:30px;
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,0.2);
+    margin-top:30px;
+}
+
+.instructions h3{
+    color:var(--blue);
+    margin-bottom:15px;
+    font-size:1.5em;
+}
+
+.instructions ul{
+    margin-left:20px;
+    line-height:2;
+}
+
+/* tables */
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin:25px 0;
+    background:rgba(0,0,0,0.3);
+    border-radius:15px;
+    overflow:hidden;
+}
+
+thead{
+    background:linear-gradient(135deg,var(--purple),var(--pink));
+}
+
+th{
+    padding:15px;
+    text-align:left;
+    color:#020617;
+    font-weight:700;
+}
+
+td{
+    padding:12px 15px;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+tbody tr:nth-child(odd){
+    background:rgba(255,255,255,0.05);
+}
+
+tbody tr:nth-child(even){
+    background:rgba(0,0,0,0.2);
+}
+
+tbody tr:hover{
+    background:rgba(168,85,247,0.2);
+    transform:scale(1.01);
+    transition:0.3s;
+}
+
+/* contact form */
+#contact-section{
+    background:rgba(255,255,255,0.1);
+    padding:40px;
+    border-radius:25px;
+    border:1px solid rgba(255,255,255,0.2);
+    box-shadow:0 15px 40px rgba(0,0,0,0.5);
+    margin-top:40px;
+}
+
+#contact-section h2{
+    font-size:2em;
+    margin-bottom:20px;
+    color:var(--blue);
+}
+
+.form-group{
+    margin-bottom:20px;
+    text-align:left;
+}
+
+label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:600;
+    color:var(--blue-soft);
+}
+
+input[type="text"],
+input[type="email"],
+textarea,
+select{
+    width:100%;
+    padding:12px;
+    border:2px solid rgba(255,255,255,0.2);
+    border-radius:10px;
+    background:rgba(255,255,255,0.1);
+    color:white;
+    font-family:'Poppins',sans-serif;
+    font-size:1em;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+    outline:none;
+    border-color:var(--blue);
+    box-shadow:0 0 15px rgba(94,203,255,0.5);
+}
+
+textarea{
+    resize:vertical;
+    min-height:100px;
+}
+
+button[type="submit"]{
+    padding:12px 30px;
+    border:none;
+    border-radius:10px;
+    background:linear-gradient(135deg,var(--blue),var(--green));
+    color:#020617;
+    font-weight:700;
+    font-size:1.1em;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button[type="submit"]:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 20px rgba(94,203,255,0.7);
+}
+
+#form-response{
+    margin-top:20px;
+    padding:15px;
+    border-radius:10px;
+    display:none;
+}
+
+/* footer */
+footer{
+    text-align:center;
+    padding:40px 20px;
+    margin-top:60px;
+    border-top:2px solid var(--blue);
+    background:rgba(2,11,23,0.8);
+}
+
+footer a{
+    display:inline-block;
+    margin-top:15px;
+    padding:12px 30px;
+    background:linear-gradient(135deg,var(--purple),var(--pink));
+    color:white;
+    font-weight:700;
+    text-decoration:none;
+    border-radius:10px;
+    transition:0.3s;
+}
+
+footer a:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 20px rgba(168,85,247,0.7);
+}
+
+/* mobile friendly */
+@media(max-width:768px){
+    header h1{font-size:2.5em;}
+    nav{flex-direction:column;gap:15px;padding:20px;}
+    nav a{margin:0 10px;}
+    main{padding:0 20px;}
+    .game-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- floating emojis -->
+<div class="float">🎮</div>
+<div class="float">✨</div>
+<div class="float">🎯</div>
+<div class="float">🔮</div>
+<div class="float">🎲</div>
+
+<!-- navigation -->
+<nav>
+    <h2>My Hobbies</h2>
+    <div>
+        <a href="page1.html">Home</a>
+        <a href="page2.html">Football</a>
+        <a href="page3.html">Music</a>
+        <a href="page4.html">Games</a>
+    </div>
+</nav>
+
+<!-- header -->
+<header>
+    <h1>🎮 Playing Games</h1>
+    <p>
+        Gaming is one of my favorite hobbies! Whether it's video games, board games, or online games,
+        I love the challenge and fun they bring. Here's everything about my gaming hobby!
+    </p>
+</header>
+
+<!-- main content -->
+<main>
+
+    <section class="card">
+        <h2>🎮 My Favorite Video Games</h2>
+        <p>I love playing different types of games on my console and PC. Here are some of my absolute favorites that I play regularly with friends!</p>
+        
+        <div class="game-grid">
+            <div class="game-card">
+                <div class="icon">⚔️</div>
+                <h3>Minecraft</h3>
+                <p>Building, exploring, and surviving in a blocky world</p>
+            </div>
+            
+            <div class="game-card">
+                <div class="icon">🏎️</div>
+                <h3>Forza Horizon</h3>
+                <p>Racing through amazing tracks with cool cars</p>
+            </div>
+            
+            <div class="game-card">
+                <div class="icon">🎯</div>
+                <h3>Roblox</h3>
+                <p>Playing tons of different games created by players</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>🔥 Why I Love Gaming</h2>
+        <p>Gaming is more than just entertainment for me. It helps me relax after a long day of school, improves my problem-solving skills, and lets me connect with friends online. Plus, it's just really fun!</p>
+        
+        <p style="margin-top:15px;">Some benefits of gaming:</p>
+        <ul style="margin-left:30px;line-height:1.8;">
+            <li>Improves hand-eye coordination</li>
+            <li>Teaches teamwork and strategy</li>
+            <li>Helps develop quick thinking</li>
+            <li>Great way to make friends online</li>
+            <li>Reduces stress and anxiety</li>
+        </ul>
+    </section>
+
+    <section class="card">
+        <h2>📅 My Gaming Schedule</h2>
+        <p>Here's when I usually play games during the week:</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Game</th>
+                    <th>Time</th>
+                    <th>Platform</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Monday</td>
+                    <td>Minecraft</td>
+                    <td>7:00 PM - 8:30 PM</td>
+                    <td>PC</td>
+                </tr>
+                <tr>
+                    <td>Wednesday</td>
+                    <td>Roblox</td>
+                    <td>6:00 PM - 7:00 PM</td>
+                    <td>PC</td>
+                </tr>
+                <tr>
+                    <td>Friday</td>
+                    <td>Forza Horizon</td>
+                    <td>8:00 PM - 10:00 PM</td>
+                    <td>Xbox</td>
+                </tr>
+                <tr>
+                    <td>Saturday</td>
+                    <td>Any game</td>
+                    <td>2:00 PM - 5:00 PM</td>
+                    <td>PC/Xbox</td>
+                </tr>
+                <tr>
+                    <td>Sunday</td>
+                    <td>Online with friends</td>
+                    <td>3:00 PM - 6:00 PM</td>
+                    <td>PC</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="game-section">
+        <div class="game-container">
+            <h2 style="color:var(--purple);margin-bottom:20px;">🎯 Number Guessing Game</h2>
+            <p style="margin-bottom:20px;">I created this mini-game using JavaScript! Try to guess the secret number between 1 and 100.</p>
+            
+            <div class="game-display">
+                <div id="score-display">Score: 0 | High Score: 0</div>
+                <div id="game-message">Press Start to Play!</div>
+                
+                <div class="game-input">
+                    <input type="number" id="guess-input" min="1" max="100" placeholder="Enter 1-100" disabled>
+                    <button class="game-btn" id="submit-btn" disabled>Submit Guess</button>
+                </div>
+                
+                <div>
+                    <button class="game-btn" id="start-btn">Start Game</button>
+                    <button class="game-btn" id="reset-btn">Reset</button>
+                </div>
+                
+                <div id="previous-guesses">
+                    <p>Your Guesses:</p>
+                    <div class="guess-history" id="guess-history"></div>
+                </div>
+            </div>
+            
+            <div class="instructions">
+                <h3>How to Play:</h3>
+                <ul>
+                    <li>Click "Start Game" to begin</li>
+                    <li>Enter a number between 1 and 100</li>
+                    <li>Click "Submit Guess" to check your answer</li>
+                    <li>You have 10 attempts to find the secret number</li>
+                    <li>The game will tell you if you're too high or too low</li>
+                    <li>Win to increase your score!</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact-section">
+        <h2>📧 Contact Me</h2>
+        <p>Want to talk about games or play together? Fill out this form and I'll get back to you!</p>
+        
+        <form id="contact-form">
+            <div class="form-group">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="hobby">Your Favorite Game Type:</label>
+                <select id="hobby" name="hobby" required>
+                    <option value="">-- Choose One --</option>
+                    <option value="action">Action Games</option>
+                    <option value="racing">Racing Games</option>
+                    <option value="sports">Sports Games</option>
+                    <option value="puzzle">Puzzle Games</option>
+                    <option value="adventure">Adventure Games</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+            </div>
+            
+            <button type="submit">Send Message</button>
+        </form>
+        
+        <div id="form-response"></div>
+    </section>
+
+</main>
+
+<!-- footer -->
+<footer>
+    <p>&copy; 2025 My Hobby Website | Grade 9 Final Project</p>
+    <p style="margin-top:10px;font-size:0.9em;">Made with HTML, CSS, and JavaScript</p>
+    <a href="page1.html">← Back to Homepage</a>
+</footer>
+
+<script src="game.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+

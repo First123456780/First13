@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Hobby | Playing Football</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* my colors */
+:root{
+    --blue:#5ecbff;
+    --blue-soft:#b6e8ff;
+    --dark:#020b17;
+    --green:#22ff88;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+    font-family:'Poppins',sans-serif;
+    min-height:100vh;
+    color:white;
+    background:linear-gradient(-45deg,#020617,#0f172a,#1e293b,#020617);
+    background-size:400% 400%;
+    animation:bgMove 20s ease infinite;
+    overflow-x:hidden;
+}
+
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* floating stuff */
+.float{
+    position:fixed;
+    font-size:40px;
+    opacity:0.15;
+    animation:float 14s linear infinite;
+    pointer-events:none;
+}
+
+.float:nth-child(1){top:10%;left:8%;animation-duration:12s;}
+.float:nth-child(2){top:70%;left:15%;animation-duration:16s;}
+.float:nth-child(3){top:30%;left:80%;animation-duration:18s;}
+.float:nth-child(4){top:80%;left:65%;animation-duration:14s;}
+
+@keyframes float{
+    0%{transform:translateY(0) rotate(0deg);}
+    50%{transform:translateY(-60px) rotate(180deg);}
+    100%{transform:translateY(0) rotate(360deg);}
+}
+
+/* navigation bar */
+nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 45px;
+    background:rgba(2,6,23,0.8);
+    backdrop-filter:blur(12px);
+    border-bottom:2px solid var(--blue);
+}
+
+nav h2{
+    font-weight:800;
+    color:var(--blue);
+}
+
+nav a{
+    color:#e5e7eb;
+    text-decoration:none;
+    margin-left:25px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:var(--green);
+    text-shadow:0 0 10px var(--green);
+}
+
+/* header section */
+header{
+    max-width:1200px;
+    margin:auto;
+    padding:80px 50px;
+    text-align:center;
+}
+
+header h1{
+    font-size:3.5em;
+    font-weight:800;
+    background:linear-gradient(90deg,var(--blue),var(--green));
+    -webkit-background-clip:text;
+    color:transparent;
+    margin-bottom:20px;
+}
+
+header p{
+    font-size:1.2em;
+    line-height:1.7;
+    max-width:800px;
+    margin:0 auto;
+}
+
+/* main content */
+main{
+    max-width:1200px;
+    margin:0 auto 100px;
+    padding:0 45px;
+}
+
+/* cards for each section */
+.card{
+    background:rgba(255,255,255,0.1);
+    padding:40px;
+    border-radius:25px;
+    border:1px solid rgba(255,255,255,0.2);
+    box-shadow:0 15px 40px rgba(0,0,0,0.5);
+    margin-bottom:40px;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:var(--blue);
+    box-shadow:0 20px 50px rgba(0,0,0,0.7);
+}
+
+.card h2{
+    font-size:2em;
+    margin-bottom:20px;
+    color:var(--blue);
+}
+
+.card p{
+    font-size:1.1em;
+    line-height:1.7;
+    margin-bottom:15px;
+}
+
+/* images */
+.image-container{
+    margin:25px 0;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,0.6);
+}
+
+.image-container img{
+    width:100%;
+    height:300px;
+    object-fit:cover;
+    display:block;
+}
+
+/* tables */
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin:25px 0;
+    background:rgba(0,0,0,0.3);
+    border-radius:15px;
+    overflow:hidden;
+}
+
+thead{
+    background:linear-gradient(135deg,var(--blue),var(--green));
+}
+
+th{
+    padding:15px;
+    text-align:left;
+    color:#020617;
+    font-weight:700;
+}
+
+td{
+    padding:12px 15px;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+}
+
+/* zebra striping */
+tbody tr:nth-child(odd){
+    background:rgba(255,255,255,0.05);
+}
+
+tbody tr:nth-child(even){
+    background:rgba(0,0,0,0.2);
+}
+
+tbody tr:hover{
+    background:rgba(94,203,255,0.2);
+    transform:scale(1.01);
+    transition:0.3s;
+}
+
+/* fun fact box */
+.fun-fact{
+    margin-top:20px;
+    padding:20px;
+    background:rgba(34,255,136,0.1);
+    border-left:4px solid var(--green);
+    border-radius:10px;
+}
+
+/* footer */
+footer{
+    text-align:center;
+    padding:40px 20px;
+    margin-top:60px;
+    border-top:2px solid var(--blue);
+    background:rgba(2,11,23,0.8);
+}
+
+footer a{
+    display:inline-block;
+    margin-top:15px;
+    padding:12px 30px;
+    background:linear-gradient(135deg,var(--blue),var(--green));
+    color:#020617;
+    font-weight:700;
+    text-decoration:none;
+    border-radius:10px;
+    transition:0.3s;
+}
+
+footer a:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 20px rgba(94,203,255,0.7);
+}
+
+/* mobile friendly */
+@media(max-width:768px){
+    header h1{font-size:2.5em;}
+    nav{flex-direction:column;gap:15px;padding:20px;}
+    nav a{margin:0 10px;}
+    main{padding:0 20px;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- floating emojis -->
+<div class="float">⚽</div>
+<div class="float">✨</div>
+<div class="float">🔥</div>
+<div class="float">⚡</div>
+
+<!-- navigation -->
+<nav>
+    <h2>My Hobbies</h2>
+    <div>
+        <a href="page1.html">Home</a>
+        <a href="page2.html">Football</a>
+        <a href="page3.html">Music</a>
+        <a href="page4.html">Game</a>
+    </div>
+</nav>
+
+<!-- header -->
+<header>
+    <h1>⚽ Playing Football</h1>
+    <p>
+        Football is my favorite hobby because it is exciting, fast-paced, and full of energy.
+        Playing football keeps me healthy, builds teamwork skills, and gives me confidence.
+    </p>
+</header>
+
+<!-- main content -->
+<main>
+
+    <!-- what is football -->
+    <section class="card">
+        <h2>⚽ What Is Football?</h2>
+        <p>Football (or soccer) is a team sport where players work together using skill, speed, and strategy to score goals. It's the most popular sport in the world and I love playing it with my friends!</p>
+        
+        <div class="image-container">
+            <img src="kkk.jpg" alt="Football on grass field">
+        </div>
+    </section>
+
+    <!-- my experience -->
+    <section class="card">
+        <h2>🔥 My Experience</h2>
+        <p>I have been playing football for about 3 years now. I started playing with friends at the park, and now I play for my school team. I play midfielder because I like to run a lot and help both offense and defense.</p>
+        
+        <div class="image-container">
+            <img src="fg.avif" alt="Kids playing football">
+        </div>
+    </section>
+
+    <!-- schedule table -->
+    <section class="card">
+        <h2>📅 My Weekly Football Schedule</h2>
+        <p>Here's when I play football during the week:</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Activity</th>
+                    <th>Time</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Monday</td>
+                    <td>Team Practice</td>
+                    <td>4:00 PM - 6:00 PM</td>
+                    <td>School Field</td>
+                </tr>
+                <tr>
+                    <td>Wednesday</td>
+                    <td>Skills Training</td>
+                    <td>4:30 PM - 5:30 PM</td>
+                    <td>Community Center</td>
+                </tr>
+                <tr>
+                    <td>Friday</td>
+                    <td>Match Day</td>
+                    <td>5:00 PM - 7:00 PM</td>
+                    <td>Main Stadium</td>
+                </tr>
+                <tr>
+                    <td>Saturday</td>
+                    <td>Casual Play</td>
+                    <td>10:00 AM - 12:00 PM</td>
+                    <td>Park</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- equipment table -->
+    <section class="card">
+        <h2>⚡ Equipment I Use</h2>
+        <p>This is the gear I use when I play:</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Brand</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Football Boots</td>
+                    <td>Nike</td>
+                    <td>Firm ground cleats</td>
+                </tr>
+                <tr>
+                    <td>Shin Guards</td>
+                    <td>Adidas</td>
+                    <td>Size medium</td>
+                </tr>
+                <tr>
+                    <td>Training Ball</td>
+                    <td>Puma</td>
+                    <td>Size 5</td>
+                </tr>
+                <tr>
+                    <td>Water Bottle</td>
+                    <td>Generic</td>
+                    <td>1 liter capacity</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="fun-fact">
+            <strong>Fun Fact:</strong> Playing football improves your concentration and teamwork skills! It's not just about running around - you need strategy too.
+        </div>
+    </section>
+
+    <!-- why i love it -->
+    <section class="card">
+        <h2>💚 Why I Love Football</h2>
+        <p>Football makes me happy, reduces stress, and motivates me to stay active. The best part is playing with my teammates and celebrating when we score a goal. It's an amazing feeling!</p>
+        
+        <div class="image-container">
+            <img src="ki.webp" alt="Football team celebrating">
+        </div>
+    </section>
+
+</main>
+
+<!-- footer -->
+<footer>
+    <p>&copy; 2025 My Hobby Website | Grade 9 Final Project</p>
+    <a href="page1.html">← Back to Homepage</a>
+</footer>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
